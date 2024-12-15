@@ -9,6 +9,9 @@
 		"type": "git",
 		"url": "https://github.com/Saturnych/saturnych.ru"
 	},
+	"bugs": {
+		"url": "https://github.com/Saturnych/saturnych.ru/issues"
+	},
 	"author": {
 		"name": "Denis Glebko",
 		"email": "saturnych@gmail.com",
@@ -47,7 +50,6 @@
 		"prettier-plugin-tailwindcss": "^0.6.9",
 		"svelte": "^5.13.0",
 		"svelte-check": "^4.0.4",
-		"svelte-markdown": "^0.4.1",
 		"svelte-meta-tags": "^4.0.4",
 		"tailwindcss": "^3.4.13",
 		"typescript": "^5.6.2",
@@ -62,6 +64,9 @@
 	},
 	"peerDependencies": {
 		"svelte": "^5.13.0"
+	},
+	"engines": {
+		"node": ">=18.17.0"
 	},
 	"keywords": [
 		"svelte",

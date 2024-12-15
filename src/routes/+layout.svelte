@@ -10,7 +10,7 @@
 
 	const { title, description } = config;
 
-	let { children } = $props();
+	let { children, data } = $props();
 
 	Object.keys(storage)
 		.filter((k) => !!k && k != 'getValue' && k != 'clearStorage')

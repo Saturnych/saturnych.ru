@@ -8,8 +8,14 @@ const dev = process.argv.includes('dev');
 const config = {
 	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
 	// for more information about preprocessors
-	preprocess: [vitePreprocess(), mdsvex()],
-	extensions: ['.svelte', '.svx'],
+	extensions: ['.svelte', '.svx', '.md'],
+	preprocess: [
+		vitePreprocess(),
+		mdsvex({
+			extensions: ['.svx', '.md'],
+			//layout: { pages: 'src/routes/(pages)/pages.svelte' },
+		}),
+	],
 	kit: {
 		appDir: 'app', // Required as the default is _app
 		paths: {
