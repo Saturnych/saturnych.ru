@@ -1,6 +1,10 @@
 <script lang="ts">
   let { data } = $props();
+  const { title, date } = data;
   console.log('(pages)/[slug]/+page.svelte data:', data);
 </script>
 
-<h1>(pages)/[slug]/+page.svelte</h1>
+<article>
+	<h1>{title}</h1>
+	<p>Published: {date}</p>
+</article>

@@ -32,6 +32,7 @@ const config = {
 					return;
 				}
 				*/
+				if (path.startsWith('/tag')) return;
 
 				// otherwise fail the build
 				throw new Error(message);

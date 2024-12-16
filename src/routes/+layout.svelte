@@ -1,26 +1,31 @@
 <script lang="ts">
-	import { onMount, setContext } from 'svelte';
-	import { page } from '$app/stores';
-	import { config } from '$lib/config';
-	import ENV from '$lib/public';
-	import storage from '$lib/storage';
-	import modeobserver from '$lib/modeobserver';
-	import MetaTag from '$lib/components/MetaTag.svelte';
 	import '../app.css';
+	import { onMount } from 'svelte';
+	import { contact, navigation } from '$lib/stores/stores';
+	import Header from '$lib/components/header/header.svelte';
+	import Footer from '$lib/components/footer/footer.svelte';
+	import Navigation from '$lib/components/navigation/navigation.svelte';
+	import ContactModal from '$lib/components/contact-modal/contact-modal.svelte';
 
-	const { title, description } = config;
+	let mobileNavigationMenu: Navigation;
+	let contactModal: ContactModal;
 
 	let { children, data } = $props();
 
-	Object.keys(storage)
-		.filter((k) => !!k && k != 'getValue' && k != 'clearStorage')
-		.forEach((key) => {
-			if (storage.getValue(storage[key])) setContext(key, storage[key]);
-		});
-
-	onMount(modeobserver);
+	onMount(() => {
+		navigation.set(mobileNavigationMenu);
+		contact.set(contactModal);
+	});
 </script>
 
-<MetaTag {description} {title} />
-
-{@render children()}
+<Navigation bind:this={mobileNavigationMenu} />
+<ContactModal bind:this={contactModal} />
+<div class="h-dvh">
+	<div class="flex min-h-dvh flex-col">
+		<Header />
+		<div class="flex-1">
+			{@render children()}
+		</div>
+		<Footer />
+	</div>
+</div>

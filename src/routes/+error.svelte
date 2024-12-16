@@ -1,40 +1,29 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import NotFound from '$lib/components/error/NotFound.svelte';
-	import Maintenance from '$lib/components/error/Maintenance.svelte';
-	import ServerError from '$lib/components/error/ServerError.svelte';
-	import MetaTag from '$lib/components/MetaTag.svelte';
-	import ENV from '$lib/public';
 	import '../app.css';
-
-	const { name, description = 'Not Found' } = NotFound;
-
-	const status = +$page.status;
-	if (ENV.DEV) console.log('error status:', status);
-
-	const pages = {
-		400: 'Something Has Gone Wrong',
-		404: 'Page Not Found',
-		500: 'Server Error'
-	} as const;
-
-	const components = {
-		400: Maintenance,
-		404: NotFound,
-		500: ServerError
-	} as const;
-
-	type ErrorCode = keyof typeof pages;
-
-	const index = Object.keys(components)
-		.map((x) => +x)
-		.reduce((p, c) => (p < status ? c : p)) as ErrorCode;
-	if (ENV.DEV) console.log('error index:', index);
-	const component = components[index];
-
-	const title: string = `${index} - ${pages[index]}`;
+	import { page } from '$app/stores';
+	import { Undo2 } from 'lucide-svelte';
+	import Container from '$lib/components/container/container.svelte';
+	import Section from '$lib/components/section/section.svelte';
+	import ErrorState from '$lib/components/error-state/error-state.svelte';
+	import BasicButton from '$lib/components/buttons/basic/basic-button.svelte';
 </script>
 
-<MetaTag {description} {title} />
+<svelte:head>
+	<title>Oops...</title>
+</svelte:head>
 
-<svelte:component this={component} />
+<Container>
+	<Section>
+		<ErrorState
+			class="my-24 sm:my-32 md:my-40 lg:my-48 xl:my-56"
+			subtitle={$page.status === 404
+				? "The page you requested wasn't found, it may have been moved or deleted."
+				: 'Please try again later or contact me if the issue persists.'}
+			title={$page.status === 404 ? 'Not Found' : 'Error'}
+		>
+			<div class="flex justify-center gap-2">
+				<BasicButton color="primary" href="/" icon={Undo2} text="Return to home" />
+			</div>
+		</ErrorState>
+	</Section>
+</Container>
