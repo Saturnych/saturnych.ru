@@ -1,11 +1,22 @@
 <script lang="ts">
 	import '../app.css';
+	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { Undo2 } from 'lucide-svelte';
 	import Container from '$lib/components/container/container.svelte';
 	import Section from '$lib/components/section/section.svelte';
 	import ErrorState from '$lib/components/error-state/error-state.svelte';
 	import BasicButton from '$lib/components/buttons/basic/basic-button.svelte';
+
+	const { url }: { URL } = $page;
+	console.log('+error url:', url);
+
+	onMount(async () => {
+		if (url?.pathname.startsWith('/tags/')) {
+			await goto('/');
+		}
+	});
 </script>
 
 <svelte:head>

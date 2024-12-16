@@ -1,15 +1,16 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import { vs } from 'svelte-highlight/styles';
+	import { page } from '$app/stores';
+	import { config } from '$lib/config';
 
-	export let title: string;
-	export let description: string;
-	export let canonical: string;
+	const { title, description, canonical } = config;
+
+	let { data } = $props();
 </script>
 
 <svelte:head>
-	<title>{title}</title>
-	<meta content={description} name="description" />
-	<link href={canonical} rel="canonical" />
+	<title>{data?.title || title || ''}</title>
+	<meta content={data?.description || description || ''} name="description" />
+	<link href={data?.description || canonical || ''} rel="canonical" />
 	{@html vs}
 </svelte:head>

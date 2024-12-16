@@ -3,7 +3,8 @@ export const config = {
 	version: '0.1.1',
 	title: 'Saturnych.ru',
 	description: 'saturnych.ru',
-	homepage: 'https://saturnych.ru',
+	canonical: 'https://saturnych.ru/',
+	homepage: 'https://saturnych.ru/',
 	repository: 'https://github.com/Saturnych/saturnych.ru',
 	author: 'Denis Glebko',
 };

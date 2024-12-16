@@ -10,7 +10,7 @@
 			class="flex flex-col-reverse justify-between gap-4 border-t-2 border-gray-200 py-6 text-center sm:flex-row"
 		>
 			<p class="text-sm tracking-tight text-gray-500 sm:text-base">
-				Copyright © 2021 - {new Date().getFullYear()}. All rights reserved.
+				Copyright © 2001 - {new Date().getFullYear()}. All rights reserved.
 			</p>
 			<div class="mx-auto flex gap-3 text-gray-500 sm:mx-0">
 				<a

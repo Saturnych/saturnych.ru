@@ -1,4 +1,7 @@
 <script lang="ts">
+  import { page } from '$app/stores';
+  console.log('pages page:', $page);
+  
   let { data } = $props();
   const { title, date } = data;
   console.log('(pages)/[slug]/+page.svelte data:', data);

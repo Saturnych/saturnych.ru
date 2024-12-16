@@ -7,6 +7,14 @@
 	function onScroll() {
 		scrolled.set(window.scrollY > 1);
 	}
+	/*
+	<Button
+		active={$page.url.pathname.startsWith('/tags')}
+		href="/tags"
+		on:click={() => sessionStorage.removeItem('previousPage')}
+		text="Tags"
+	/>
+	*/
 </script>
 
 <header class="z-10 w-full">
@@ -27,12 +35,7 @@
 					href="/projects"
 					text="Projects"
 				/>
-				<Button
-					active={$page.url.pathname.startsWith('/tags')}
-					href="/tags"
-					on:click={() => sessionStorage.removeItem('previousPage')}
-					text="Tags"
-				/>
+
 				<Button
 					color="primary"
 					icon={MessageCircleMore}
