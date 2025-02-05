@@ -2,4 +2,4 @@
 
 SvelteKit Blog
 
-hosted at GitHUb Pages
+hosted at GitHub Pages
